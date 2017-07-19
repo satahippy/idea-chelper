@@ -60,11 +60,11 @@ public class HackerRankParser implements Parser {
 			StreamConfiguration output = StreamConfiguration.STANDARD;
 			List<Test> tests = new ArrayList<Test>();
 			while (parser.advanceIfPossible(true, "<div class=\"challenge_sample_input\">") != null) {
-				parser.advance(true, "<span class=\"err\">");
-				String testInput = StringEscapeUtils.unescapeHtml(parser.advance(false, "</pre>")).
+				parser.advance(true, "<code>");
+				String testInput = StringEscapeUtils.unescapeHtml(parser.advance(false, "</code>")).
 					replace("</span>", "").replace("<span class=\"err\">", "");
-				parser.advance(true, "<span class=\"err\">");
-				String testOutput = StringEscapeUtils.unescapeHtml(parser.advance(false, "</pre>")).
+				parser.advance(true, "<code>");
+				String testOutput = StringEscapeUtils.unescapeHtml(parser.advance(false, "</code>")).
 					replace("</span>", "").replace("<span class=\"err\">", "");
 				tests.add(new Test(testInput, testOutput, tests.size()));
 			}
