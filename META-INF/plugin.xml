@@ -48,6 +48,9 @@
               icon="/icons/copy.png" description="Copies source to clipboard">
           <keyboard-shortcut keymap="$default" first-keystroke="alt F8"/>
       </action>
+      <action id="copyResult" class="net.egork.chelper.actions.CopyResultAction" text="Copy Result"
+              icon="/icons/copy.png" description="Copies result to clipboard">
+      </action>
       <action id="editProjectProperties" class="net.egork.chelper.actions.EditProjectProperties" icon="/icons/settings.png"
               text="Edit Project Settings"/>
       <action id="unarchiveTask" class="net.egork.chelper.actions.UnarchiveTaskAction" text="Restore Task" icon="/icons/unarchive.png"
