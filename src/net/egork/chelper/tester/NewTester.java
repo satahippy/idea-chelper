@@ -165,29 +165,7 @@ public class NewTester {
 	{
 		Object solver = taskClass.getConstructor().newInstance();
 		Method solve = taskClass.getMethod("solve", int.class, readerClass, writerClass);
-		if (testType == TestType.SINGLE) {
-			solve.invoke(solver, 1, in, out);
-			return;
-		}
-		if (testType == TestType.MULTI_EOF) {
-			try {
-				int testIndex = 1;
-				//noinspection InfiniteLoopStatement
-				while (true)
-					solve.invoke(solver, testIndex++, in, out);
-			} catch (InvocationTargetException e) {
-				if (e.getCause() instanceof UnknownError)
-					return;
-				throw e;
-			}
-		}
-		if (testType == TestType.MULTI_NUMBER) {
-			Method read = readerClass.getMethod("next");
-			String testCount = (String)read.invoke(in);
-			int count = Integer.parseInt(testCount);
-			for (int i = 0; i < count; i++)
-				solve.invoke(solver, i + 1, in, out);
-		}
+		solve.invoke(solver, 1, in, out);
 	}
 
 	private static Collection<? extends Test> addGeneratedTests(String fqn, int initialTestCount)
